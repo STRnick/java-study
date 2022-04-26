@@ -12,7 +12,7 @@ public class Prob05 {
 
 			/* 게임 작성 */
 
-			// 정답 램덤하게 만들기
+			// 정답 랜덤하게 만들기
 			Random random = new Random();
 			int correctNumber = random.nextInt(100) + 1;
 			int count = 0;
