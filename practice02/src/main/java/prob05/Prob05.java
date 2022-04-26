@@ -11,7 +11,7 @@ public class Prob05 {
 		while (true) {
 
 			/* 게임 작성 */
-					
+
 			// 정답 램덤하게 만들기
 			Random random = new Random();
 			int correctNumber = random.nextInt(100) + 1;
@@ -21,6 +21,7 @@ public class Prob05 {
 //			System.out.println(correctNumber);
 
 			while (true) {
+				count++;
 				System.out.println(num + " - 100");
 				System.out.print(count + " >> ");
 				num = scanner.nextInt();
@@ -33,16 +34,14 @@ public class Prob05 {
 					System.out.println("맞았습니다.");
 					break;
 				}
-
 			}
 
 			// 새 게임 여부 확인하기
 			System.out.print("다시 하겠습니까(y/n)>>");
 			String answer = scanner.next();
-			if ("y".equals(answer) == false) {
-				break;
-			}
-			else {
+			if ("y".equals(answer) == true) {
+				continue;
+			} else {
 				System.out.println("종료.");
 				break;
 			}
