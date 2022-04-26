@@ -11,7 +11,17 @@ public class Prob04 {
 	
 	public static char[] reverse(String str) {
 		/* 코드를 완성합니다 */
-		return null;
+		char[] word = str.toCharArray();
+
+		int count = word.length / 2;
+		
+		for(int i = 0; i < count; i++) {
+			char Keep = word[i];
+			word[i] = word[word.length - 1 - i];
+			word[word.length - 1 - i] = Keep;
+		}
+
+		return word;
 	}
 
 	public static void printCharArray(char[] array){
