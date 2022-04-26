@@ -19,6 +19,11 @@ Java 네트워크 프로그래밍 수업 예제
 
 ### practice02
 자바 기본 프로그래밍 연습문제2
+① [Prob1](https://github.com/STRnick/java-study/blob/master/practice02/src/main/java/prob01/Prob01.java)  
+② [Prob2](https://github.com/STRnick/java-study/blob/master/practice02/src/main/java/prob02/Prob02.java)  
+③ [Prob3](https://github.com/STRnick/java-study/blob/master/practice02/src/main/java/prob03/Prob03.java) 
+④ [Prob4](https://github.com/STRnick/java-study/blob/master/practice02/src/main/java/prob04/Prob04.java)
+⑤ [Prob5](https://github.com/STRnick/java-study/blob/master/practice02/src/main/java/prob05/Prob05.java)
 
 ### practice03
 자바 객체지향 프로그래밍 연습문제3
