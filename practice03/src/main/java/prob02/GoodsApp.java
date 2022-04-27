@@ -23,7 +23,7 @@ public class GoodsApp {
 
 		// 상품 출
 		for(int j=0;j<COUNT_GOODS;j++) {
-			System.out.println(+ "(가격:" + goods[j+1] + "원)이 " + goods[j+2] + "개 입고 되었습니다.");
+			System.out.println(제품명 + "(가격:" + 가격 + "원)이 " + 개수 + "개 입고 되었습니다.");
 		}
 		// 자원정리
 		scanner.close();
