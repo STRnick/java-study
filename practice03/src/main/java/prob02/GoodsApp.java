@@ -20,10 +20,7 @@ public class GoodsApp {
 			int price = Integer.parseInt(tokens[1]);
 			int count = Integer.parseInt(tokens[2]);
 			
-			goods[i] = new Goods();
-			goods[i].setName(name);
-			goods[i].setPrice(price);
-			goods[i].setCount(count);
+			
 		}
 
 		// 상품 출
