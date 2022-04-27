@@ -1,6 +1,5 @@
 package prob02;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class GoodsApp {
@@ -20,11 +19,12 @@ public class GoodsApp {
 			int price = Integer.parseInt(tokens[1]);
 			int count = Integer.parseInt(tokens[2]);
 			
+			goods[i] = new Goods(name, price, count);
 		}
-
+		
 		// 상품 출력
-		for(int i=0;i<COUNT_GOODS;i++) {
-			.show();
+		for(int i = 0; i < COUNT_GOODS; i++) {
+			goods[i].show();
 		}
 		
 		// 자원정리
