@@ -20,12 +20,11 @@ public class GoodsApp {
 			int price = Integer.parseInt(tokens[1]);
 			int count = Integer.parseInt(tokens[2]);
 			
-			
 		}
 
-		// 상품 출
+		// 상품 출력
 		for(int i=0;i<COUNT_GOODS;i++) {
-			goods[i].show();
+			.show();
 		}
 		
 		// 자원정리
