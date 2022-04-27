@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Prob05 {
 
 	public static void main(String[] args) {
-		Scanner scanner = new Scanner( System.in );
+		Scanner scanner = new Scanner(System.in);
 
 		while (true) {
 
@@ -46,7 +46,7 @@ public class Prob05 {
 				break;
 			}
 		}
-		
+
 		scanner.close();
 	}
 
