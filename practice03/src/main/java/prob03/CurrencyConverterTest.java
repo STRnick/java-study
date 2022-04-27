@@ -9,7 +9,7 @@ public class CurrencyConverterTest {
 		double dollar = CurrencyConverter.toDollar( 1000000 );
 		System.out.println( "백만원은 " + dollar + "달러 입니다" );
 		
-		double krw = CurrencyConverter.toKRW( 100. );
+		double krw = CurrencyConverter.toKRW( 100 );
 		System.out.println( "백달러는 " + krw + "원 입니다" );
 	}
 
