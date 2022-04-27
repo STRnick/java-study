@@ -27,6 +27,11 @@ Java 네트워크 프로그래밍 수업 예제
 
 ### practice03
 자바 객체지향 프로그래밍 연습문제3
+① [Prob1](https://github.com/STRnick/java-study/blob/master/practice03/src/main/java/prob01/Member.java)  
+② [Prob2](https://github.com/STRnick/java-study/tree/master/practice03/src/main/java/prob02)  
+③ [Prob3](https://github.com/STRnick/java-study/tree/master/practice03/src/main/java/prob03)  
+④ [Prob4](https://github.com/STRnick/java-study/tree/master/practice03/src/main/java/prob04)  
+⑤ [Prob5](https://github.com/STRnick/java-study/tree/master/practice03/src/main/java/prob05)  
 
 ### practice04
 자바 객체지향 프로그래밍 연습문제4
