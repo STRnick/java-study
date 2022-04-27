@@ -1,7 +1,7 @@
 ## :computer: Java Study <a href="https://www.java.com" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="java" width="40" height="40"/> </a>
 
 ### Chapter03
-객체지향 프로그래밍 수업 예제
+[객체지향 프로그래밍 수업 예제](https://github.com/STRnick/java-study/tree/master/chapter03/src/main/java)  
 
 ### Chapter04
 Java API(java.lang.*, java.util.*, java.io.*) 수업 예제
