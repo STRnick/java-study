@@ -18,13 +18,19 @@ public class GoodsApp {
 			
 			String name = tokens[0];
 			int price = Integer.parseInt(tokens[1]);
-			int count = Integer.parseInt(tokens[2]);	
+			int count = Integer.parseInt(tokens[2]);
+			
+			goods[i] = new Goods();
+			goods[i].setName(name);
+			goods[i].setPrice(price);
+			goods[i].setCount(count);
 		}
 
 		// 상품 출
-		for(int j=0;j<COUNT_GOODS;j++) {
-			System.out.println(제품명 + "(가격:" + 가격 + "원)이 " + 개수 + "개 입고 되었습니다.");
+		for(int i=0;i<COUNT_GOODS;i++) {
+			goods[i].show();
 		}
+		
 		// 자원정리
 		scanner.close();
 	}
