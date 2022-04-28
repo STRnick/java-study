@@ -2,7 +2,7 @@ package prob03;
 
 public abstract class Unit {
 	private int x, y;
-
+	
 	public int getX() {
 		return x;
 	}
@@ -17,11 +17,9 @@ public abstract class Unit {
 
 	public void setY(int y) {
 		this.y = y;
-	}	
+	}
 	
 	void move(int x, int y) {
-		this.x = x;
-		this.y = y;
 	}
 	
 	void stop() {
