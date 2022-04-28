@@ -11,4 +11,6 @@ public class Add {
 	public int calculate() {
 		return a + b;
 	}
+	
+	//Git 커밋 테스트
 }
