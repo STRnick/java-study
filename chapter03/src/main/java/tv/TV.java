@@ -12,47 +12,40 @@ public class TV {
 	}
 
 	public void volume(boolean up) {
-//		volume(volume += (up ? 1 : -1));
-		if(up) {
-			volume += 1;
-		} else if(!up){
-			volume -= 1;
-		} else {
-		}
+		volume(volume += (up ? 1 : -1));
 	}
 	
 	public void volume(int volume) {
-		this.volume= volume;
-		if(volume>=0 || volume<=100) {
-			volume(true);
-		} else {
+		if(!power) {
+			return;
 		}
+		if(volume < 0) {
+			volume = 0;
+		} else if(volume > 100){
+			volume = 100;
+		}
+		this.volume = volume;
 //		로테이션 알고리즘 구현
 	}
 	
 	public void channel(boolean up) {
-//		volume(volume += (up ? 1 : -1));
-		if(up) {
-			channel += 1;
-		} else if(!up){
-			channel -= 1;
-		} else {
-			channel = channel;
-		}
+		channel(channel + (up ? 1 : -1));
 	}
-	
+
 	public void channel(int channel) {
-		this.channel= channel;
-		if(channel>=0 || channel<=255) {
-			channel(true);
-		} else {
-			channel = channel;
+		if(!power) {
+			return;
 		}
-//		로테이션 알고리즘 구현
+		if(channel < 0) {
+			channel = 0;
+		} else if(channel > 255){
+			channel = 255;
+		}
+		this.channel = channel;
 	}
 	
 	public void power(boolean power) {
-		this.power = power;	
+		this.power = power;
 	}
 	
 	public void status() {
