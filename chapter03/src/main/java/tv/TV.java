@@ -10,7 +10,7 @@ public class TV {
 		this.volume = volume;
 		this.power = power;
 	}
-//
+
 	public void volume(boolean up) {
 //		volume(volume += (up ? 1 : -1));
 		if(up) {
