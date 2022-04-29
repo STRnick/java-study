@@ -5,7 +5,7 @@
 		<artifactId>java-study</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>chapter03</artifactId>
+	<artifactId>chapter04</artifactId>
 
 	<packaging>jar</packaging>
 
@@ -17,7 +17,6 @@
 	</properties>
 
 	<build>
-		<finalName>chapter03</finalName>
+		<finalName>chapter04</finalName>
 	</build>
-
 </project>
