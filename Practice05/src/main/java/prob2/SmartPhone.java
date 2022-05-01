@@ -17,12 +17,10 @@ public class SmartPhone extends MusicPhone {
 
 	private void app() {
 		System.out.println("앱실행");
-
 	}
 
 	@Override
 	protected void playMusic() {
 		System.out.println("다운로드해서 음악재생");
 	}
-
 }
