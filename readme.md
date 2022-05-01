@@ -47,4 +47,5 @@ Java 네트워크 프로그래밍 수업 예제
 ② [Prob2](https://github.com/STRnick/java-study/tree/master/Practice05/src/main/java/prob2)  
 ③ [Prob3](https://github.com/STRnick/java-study/tree/master/Practice05/src/main/java/prob3)  
 ④ [Prob4](https://github.com/STRnick/java-study/tree/master/Practice05/src/main/java/prob4)  
-⑤ [Prob5](https://github.com/STRnick/java-study/tree/master/practice05/src/main/java/prob6)  
+⑤ [Prob5](https://github.com/STRnick/java-study/tree/master/Practice05/src/main/java/prob5)  
+
