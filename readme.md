@@ -41,7 +41,7 @@ Java 네트워크 프로그래밍 수업 예제
 ④ [Prob4](https://github.com/STRnick/java-study/tree/master/practice04/src/main/java/prob04)  
 ⑤ [Prob5](https://github.com/STRnick/java-study/tree/master/practice04/src/main/java/prob05)  
 
-### practice05
+### [practice05](https://github.com/STRnick/java-study/tree/master/Practice05/docs)
 자바 객체지향 프로그래밍 연습문제5  
 ① [Prob1](https://github.com/STRnick/java-study/blob/master/Practice05/src/main/java/prob1/Sort.java)  
 ② [Prob2](https://github.com/STRnick/java-study/tree/master/Practice05/src/main/java/prob2)  
