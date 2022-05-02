@@ -16,5 +16,4 @@ public class Sparrow extends Bird {
 	public String toString() {
 		return "참새의 이름은 " + getName() + " 입니다.";
 	}
-
 }
