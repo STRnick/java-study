@@ -1,10 +1,11 @@
 package prob5;
 
 public class MyStack {
-	private int top = 0;
+	private int top;
 	private String[] buffer;
 
 	public MyStack(int size) {
+		top = -1;
 		buffer = new String[size];
 	}
 
