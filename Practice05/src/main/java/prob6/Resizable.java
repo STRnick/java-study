@@ -2,6 +2,8 @@ package prob6;
 
 public interface Resizable {
 
-	public void resize(double d);
-
+	public static void resize(double d) {
+		Rectangle.width = Rectangle.width * d;
+		Rectangle.height = Rectangle.height * d;
+	}
 }

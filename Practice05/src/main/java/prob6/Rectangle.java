@@ -1,23 +1,24 @@
 package prob6;
 
-public class Rectangle extends Shape {
-	
-	private int w;
-	private int h;
+public class Rectangle extends Shape implements Resizable {
+	public static double width;
+	public static double height;
 
-	public Rectangle(int w, int h) {
-		this.h = h;
-		this.w = w;
+	public Rectangle(int width, int height) {
+		Shape.width = (double) width;
+		Shape.height = (double) height;
+		this.width = (double) width;
+		this.height = (double) height;
 	}
 
 	@Override
-	protected double getArea() {
-		return w*h;
+	public double getArea() {
+		return (width * height);
 	}
 
 	@Override
-	protected double getPerimeter() {
-		return (w+h)*2;
+	public double getPerimeter() {
+		return ((width + height)*2);
 	}
 
 }

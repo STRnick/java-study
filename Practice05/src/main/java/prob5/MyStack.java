@@ -3,36 +3,35 @@ package prob5;
 public class MyStack {
 	private int top = 0;
 	private String[] buffer;
-
+	
 	public MyStack(int size) {
 		buffer = new String[size];
 	}
 
-	public void push(String string) {
+	private void resize(){
+		if(top + 1 == buffer.length){
+			String[] newBuffer = new String[buffer.length * 2];
+			System.arraycopy(buffer, 0, newBuffer, 0, top+1);
+			buffer = newBuffer;
+		}
+	}
+
+	public void push(String item) {
 		resize();
-		buffer[++top] = string;
+		buffer[++top] = item;		
 	}
 
-	private void resize() {
-		if (top + 1 == buffer.length) {
-			String[] buffer2 = new String[buffer.length * 2];
-			System.arraycopy(buffer, 0, buffer2, 0, top + 1);
-			buffer = buffer2;
-		}
-	}
-
-	public String pop() throws MyStackException {
-		if (top == 0) {
+	public String pop() throws MyStackException{
+		if(top == 0){
 			throw new MyStackException();
-		} else {
-			String string = buffer[top];
-			buffer[top] = null;
-			top--;
-			return string;
 		}
+		String item = buffer[top];
+		buffer[top] = null;
+		top--;
+		return item;
 	}
-
-	public boolean isEmpty() {
-		return top == 0;
+	
+	public boolean isEmpty() {		
+		return (top == 0);
 	}
 }

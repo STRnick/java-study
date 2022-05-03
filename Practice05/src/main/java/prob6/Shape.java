@@ -1,9 +1,10 @@
 package prob6;
 
 public abstract class Shape {
+	protected static double width;
+	protected static double height;
 
-	protected abstract double getArea();
+	public abstract double getArea();
 
-	protected abstract double getPerimeter();
-
+	public abstract double getPerimeter();
 }
