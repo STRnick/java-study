@@ -52,7 +52,7 @@ Java 네트워크 프로그래밍 수업 예제
 ⑥ [Prob6](https://github.com/STRnick/java-study/blob/master/Practice05/src/main/java/prob6/ShapeTest.java)  
 
 ### [FinalTest](https://github.com/STRnick/java-study/tree/master/finaltest/docs)  
-finaltest
+Finaltest  
 ① [Prob1](https://github.com/STRnick/java-study/blob/master/finaltest/src/main/java/prob01/Gugudan.java)  
 ② [Prob2](https://github.com/STRnick/java-study/tree/master/finaltest/src/main/java/prob02)  
 ③ [Prob3](https://github.com/STRnick/java-study/tree/master/finaltest/src/main/java/prob03)  
