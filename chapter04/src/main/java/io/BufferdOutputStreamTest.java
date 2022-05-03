@@ -15,8 +15,17 @@ public class BufferdOutputStreamTest {
 
 			// 보조 스트림
 			bos = new BufferedOutputStream(fos);
+
+//			for (int i = 'a'; i <= 'z'; i++)
+			//ascii = 'Char'
+			for (int i = 97; i <= 122; i++) {
+				bos.write(i);
+//				bos.flush();
+			}
 		} catch (FileNotFoundException ex) {
 			System.out.println("Can't Open: " + ex);
+		} catch (IOException ex) {
+			System.out.println("Write Error:" + ex);
 		} finally {
 			try {
 				if (bos != null) {
