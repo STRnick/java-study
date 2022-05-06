@@ -117,7 +117,7 @@ public class RequestHandler extends Thread {
 		String contentType = Files.probeContentType(file.toPath());
 
 		// response
-		outputStream.write((protocol + " 404 OK\r\n").getBytes("UTF-8"));
+		outputStream.write((protocol + " 404 File Not Found\r\n").getBytes("UTF-8"));
 		outputStream.write(("Content-Type: " + contentType + "; charset=utf-8\n").getBytes("UTF-8"));
 		outputStream.write("\n".getBytes());
 		outputStream.write(body);
@@ -138,7 +138,7 @@ public class RequestHandler extends Thread {
 		String contentType = Files.probeContentType(file.toPath());
 
 		// response
-		outputStream.write((protocol + " 400 OK\r\n").getBytes("UTF-8"));
+		outputStream.write((protocol + " 400 Bad Request\r\n").getBytes("UTF-8"));
 		outputStream.write(("Content-Type: " + contentType + "; charset=utf-8\n").getBytes("UTF-8"));
 		outputStream.write("\n".getBytes());
 		outputStream.write(body);
