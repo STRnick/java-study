@@ -6,7 +6,7 @@
 ### Chapter04
 [Java API(java.lang.*, java.util.*, java.io.*) 수업 예제](https://github.com/STRnick/java-study/tree/master/chapter04/src/main/java)  
 
-### network
+### Network
 [Java 네트워크 프로그래밍 수업 예제](https://github.com/STRnick/java-study/tree/master/network)  
 
 ### [practice01](https://github.com/STRnick/java-study/tree/master/practice01/docs)
