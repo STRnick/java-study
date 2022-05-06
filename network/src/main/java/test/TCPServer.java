@@ -1,9 +1,12 @@
 package test;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
 
 public class TCPServer {
 
@@ -27,8 +30,42 @@ public class TCPServer {
 			InetSocketAddress inetSocketAddress = (InetSocketAddress) socket.getRemoteSocketAddress();
 			String remoteHostAddress = inetSocketAddress.getAddress().getHostAddress();
 			int remoteHostPort = inetSocketAddress.getPort();
-
 			System.out.println("[server] conneted by client[" + remoteHostAddress + ":" + +remoteHostPort + "]");
+
+			try {
+				// 4. IO Stream 받아오기
+				InputStream is = socket.getInputStream();
+				OutputStream os = socket.getOutputStream();
+
+				while (true) {
+					// 5. 데이터 읽기
+					byte[] buffer = new byte[256];
+					int readByteCount = is.read(buffer); // blocking
+					if (readByteCount == -1) {
+						// 클라이언트가 정상적으로 종료, close() 호출
+						System.out.println("[server] closed by client");
+						break;
+					}
+					
+					String data = new String(buffer, 0, readByteCount, "UTF-8");
+					System.out.println("[server] received: " + data);
+					
+					// 6. 데이터 쓰기
+					os.write(data.getBytes("utf-8"));
+				}
+			} catch (SocketException e) {
+				System.out.println("[server] suddenly closed by client");
+			} catch (IOException ex) {
+				System.out.println("[server] error: " + ex);
+			} finally {
+				try {
+					if (socket != null && !socket.isClosed()) {
+						socket.close();
+					}
+				} catch (IOException ex) {
+					ex.printStackTrace();
+				}
+			}
 
 		} catch (IOException e) {
 			System.out.println("[server] error: " + e);
