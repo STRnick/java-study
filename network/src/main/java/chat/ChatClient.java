@@ -7,14 +7,15 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public class ChatClient {
-	private static final String SERVER_IP = "192.168.56.1";
-	private static final int SERVER_PORT = 6666;
+	private static String SERVER_IP = null; 
+	private static final int SERVER_PORT = 9999;
 
 	public static void main(String[] args) {
 		/*
@@ -25,6 +26,7 @@ public class ChatClient {
 		Scanner scanner = null;
 		Socket socket = null;
 		try {
+			SERVER_IP = InetAddress.getLocalHost().getHostAddress();
 			// 1. 키보드 연결
 			scanner = new Scanner(System.in);
 
@@ -42,36 +44,53 @@ public class ChatClient {
 			// 5. join 프로토콜
 			System.out.print("닉네임>> ");
 			String nickname = scanner.nextLine();
-			
 			printWriter.println("join:" + nickname);
 			printWriter.flush();
-
+			
+			if("join:ok".equals(bufferedReader.readLine())) {
+				System.out.println("채팅방 입장 성공. 본인의 설정 닉네임: " + nickname);
+			
 			// 6. ChatClientReceiveThread 시작
-			new ChatClientThread(socket).start();
+			new ChatClientThread(bufferedReader).start();
 
 			// 7. 키보드 입력 처리
 			while (true) {
-				System.out.print(">>");
+				System.out.print(">> ");
 				String input = scanner.nextLine();
 
 				if ("quit".equals(input) == true) {
 					// 8. quit 프로토콜 처리
+					printWriter.println("quit");
 					break;
 				} else {
 					// 9. 메시지 처리
+					if(input.length()==0) {
+						input=" ";
+					}
+					printWriter.println("message:" + input);
 					
 				}
 			}
+		}
 		} catch (IOException ex) {
 			log("error:" + ex);
 		} finally {
 			// 10. 자원정리
-			scanner.close();
+			if(scanner != null) {
+				scanner.close();
+			}
+			if(socket !=null && !socket.isClosed()) {
+				try {
+					socket.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 
 	}
 
 	private static void log(String log) {
-		System.out.println(log);
+		System.out.println("[ChatClient] " + log);
 	}
 }

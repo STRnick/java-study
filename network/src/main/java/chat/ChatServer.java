@@ -10,10 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ChatServer {
-	private static final int PORT = 6666;
-
+	Socket socket;
+	private static final int PORT = 9999;
+	private static ServerSocket serverSocket;
 	public static void main(String[] args) {
-		ServerSocket serverSocket = null;
+		
+		
 		List<Writer> listWriters = new ArrayList<Writer>();
 		
 		try {
@@ -37,14 +39,14 @@ public class ChatServer {
 				if (serverSocket != null && !serverSocket.isClosed()) {
 					serverSocket.close();
 				}
-			} catch (IOException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
 	}
 
 	public static void log(String log) {
-		System.out.println("[server " + Thread.currentThread().getId() + "] " + log);
+		System.out.println("[ChatServer] " + log);
 	}
 
 }

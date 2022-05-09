@@ -1,26 +1,21 @@
 package chat;
 
 import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.Socket;
-import java.nio.charset.StandardCharsets;
 
 public class ChatClientThread extends Thread {
-	Socket socket = null;
+	private BufferedReader bufferedReader;
 
-	public ChatClientThread(Socket socket) {
-		this.socket = socket;
+	public ChatClientThread(BufferedReader bufferedReader) {
+		this.bufferedReader = bufferedReader;
 	}
 
 	@Override
 	public void run() {
 		try {
-			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream(), StandardCharsets.UTF_8));
-			while (true) {
+			while (bufferedReader.readLine() != null) {
 				System.out.println(bufferedReader.readLine());
 			}
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
