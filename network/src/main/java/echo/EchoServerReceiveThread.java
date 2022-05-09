@@ -11,10 +11,11 @@ import java.net.SocketException;
 
 public class EchoServerReceiveThread extends Thread {
 	private Socket socket;
+
 	public EchoServerReceiveThread(Socket socket) {
 		this.socket = socket;
 	}
-	
+
 	@Override
 	public void run() {
 		InetSocketAddress inetSocketAddress = (InetSocketAddress) socket.getRemoteSocketAddress();
