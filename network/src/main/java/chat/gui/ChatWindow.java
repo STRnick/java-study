@@ -13,21 +13,33 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 
 public class ChatWindow {
-
 	private Frame frame;
 	private Panel pannel;
 	private Button buttonSend;
 	private TextField textField;
 	private TextArea textArea;
 
-	public ChatWindow(String name) {
+	private Socket socket;
+
+	public ChatWindow(String name, Socket socket) {
 		frame = new Frame(name);
 		pannel = new Panel();
 		buttonSend = new Button("Send");
 		textField = new TextField();
 		textArea = new TextArea(30, 80);
+		this.socket = socket;
+		
+		new ChatClientReceiveThread(socket).start();
 	}
 
 	public void show() {
@@ -52,11 +64,11 @@ public class ChatWindow {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				char keycode = e.getKeyChar();
-				if(keycode == KeyEvent.VK_ENTER) {
+				if (keycode == KeyEvent.VK_ENTER) {
 					sendMessage();
 				}
 			}
-			
+
 		});
 
 		// Pannel
@@ -72,7 +84,7 @@ public class ChatWindow {
 		// Frame
 		frame.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
-				finish()
+				finish();
 			}
 		});
 		frame.setVisible(true);
@@ -84,17 +96,27 @@ public class ChatWindow {
 
 		/*
 		 * 3. Chat Client Thread 생성하고 실행
+		 * 
 		 */
+		ChatClientThread clientThread = new ChatClientThread(socket);
+		clientThread.start();
 	}
 
 	private void sendMessage() {
-		String message = textField.getText();
-		System.out.println("메세지 보내는 프로토콜 구현: " + message);
-		textField.setText("");
-		textField.requestFocus();
+		PrintWriter pw;
+		try {
+			pw = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), StandardCharsets.UTF_8), true);
+			String message = textField.getText();
+			String request = "메세지:" + message + "\r\n";
+			pw.println(request);
 
-		// Chat Client Thread에서 서버로부터 받은 메세지가 있다고 치고 (가짜데이터)
-		updateTextArea("마이콜:" + message);
+			textField.setText("");
+			textField.requestFocus();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 	private void updateTextArea(String message) {
@@ -102,20 +124,32 @@ public class ChatWindow {
 		textArea.append("\n");
 	}
 
-	
 	private void finish() {
-		System.out.println("소켓 닫기 or 방 나가기(QUIT) 프로토콜 구현");
-		System.exit(0);
+		PrintWriter pw;
+		try {
+			pw = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), StandardCharsets.UTF_8), true);
+			String request = "quit\r\n";
+			pw.println(request);
+			System.exit(0);
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
+
 	}
-	
+
 	/*
 	 * Receive Thread from Chat Server
 	 */
-	
-	private class ChatClientThread extends Thread {
+	private class ChatClientReceiveThread extends Thread{
+        Socket socket = null;
+
+        ChatClientReceiveThread(Socket socket){
+            this.socket = socket;
+        }
 
 		@Override
 		public void run() {
+			BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream(), StandardCharsets.UTF_8));
 			while (true) {
 				sendMessage();
 			}
