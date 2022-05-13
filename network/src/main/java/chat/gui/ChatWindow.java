@@ -16,7 +16,6 @@ import java.awt.event.WindowEvent;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
@@ -30,6 +29,8 @@ public class ChatWindow {
 	private TextArea textArea;
 
 	private Socket socket;
+	private BufferedReader bufferedReader;
+	private PrintWriter printWriter;
 
 	public ChatWindow(String name, Socket socket) {
 		frame = new Frame(name);
@@ -38,8 +39,8 @@ public class ChatWindow {
 		textField = new TextField();
 		textArea = new TextArea(30, 80);
 		this.socket = socket;
-		
-		new ChatClientReceiveThread(socket).start();
+
+		new chat.ChatClientThread(socket).start();
 	}
 
 	public void show() {
@@ -89,17 +90,15 @@ public class ChatWindow {
 		});
 		frame.setVisible(true);
 		frame.pack();
-
-		/*
-		 * 2. IOStream (Pipeline established)
-		 */
-
-		/*
-		 * 3. Chat Client Thread 생성하고 실행
-		 * 
-		 */
-		ChatClientThread clientThread = new ChatClientThread(socket);
-		clientThread.start();
+//
+//		/*
+//		 * 2. IOStream (Pipeline established)
+//		 */
+//
+//		/*
+//		 * 3. Chat Client Thread 생성하고 실행
+//		 * 
+//		 */
 	}
 
 	private void sendMessage() {
@@ -107,16 +106,14 @@ public class ChatWindow {
 		try {
 			pw = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), StandardCharsets.UTF_8), true);
 			String message = textField.getText();
-			String request = "메세지:" + message + "\r\n";
+			String request = "message:" + message + "\r\n";
 			pw.println(request);
 
 			textField.setText("");
 			textField.requestFocus();
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	private void updateTextArea(String message) {
@@ -134,24 +131,30 @@ public class ChatWindow {
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		}
-
 	}
 
 	/*
 	 * Receive Thread from Chat Server
 	 */
-	private class ChatClientReceiveThread extends Thread{
-        Socket socket = null;
+	private class ChatClientThread extends Thread {
+		Socket socket = null;
 
-        ChatClientReceiveThread(Socket socket){
-            this.socket = socket;
-        }
+		ChatClientThread(Socket socket) {
+			this.socket = socket;
+		}
 
 		@Override
 		public void run() {
-			BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream(), StandardCharsets.UTF_8));
-			while (true) {
-				sendMessage();
+			try {
+				BufferedReader br = new BufferedReader(
+						new InputStreamReader(socket.getInputStream(), StandardCharsets.UTF_8));
+				while (true) {
+					String msg = br.readLine();
+					textArea.append(msg);
+					textArea.append("\n");
+				}
+			} catch (Exception ex) {
+				ex.printStackTrace();
 			}
 		}
 
